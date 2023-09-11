@@ -1,0 +1,50 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;700&family=Poppins:wght@100;400;700&display=swap');
+
+*{
+    margin: 0;
+    padding:0;
+    font-family: poppins;
+}
+
+body{
+    margin-left: 2em;
+    margin-top: 5em;
+    background-color: rgb(16, 16, 58);
+}
+.movieList{
+    text-align: left;
+    margin-top: 20px;
+}
+
+.movie{
+    height: 15em;
+    width: 96%;
+    margin-bottom: 10px;
+    padding: 10px;
+    background-color: antiquewhite;
+}
+
+.movie img{
+    float: left;
+    width: 160px;
+    margin-right: 10px;
+}
+
+input{
+    width:80%;
+    height: 2.8em;
+    padding-left: 1em;
+    border-radius: 20px;
+    border:none;
+    background-color: rgb(232, 232, 232);
+}
+
+input::placeholder{
+    color: rgb(178, 178, 178);
+    font-weight: 100;
+}
+
+button{
+    padding-left: 4em;
+    padding-right: 2em;
+}
