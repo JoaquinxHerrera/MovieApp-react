@@ -1,0 +1,112 @@
+.header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.logo{
+    width: 13em;
+    cursor: pointer;
+}
+.header ul li{
+    display: inline-block;
+    padding-right: 1em;
+
+}
+
+.navLink{
+    text-decoration: none;
+    color: rgba(177, 177, 177, 1);
+    font-size: 1.4rem;
+    padding-right: 1.7em;
+}
+
+.navLink:hover{
+    color: rgba(85, 204, 255, 1)
+}
+
+.navLink:active{
+    font-weight: 600;
+    color: white;
+}
+
+
+
+.right{
+    display: flex;
+    align-items: center;
+    gap: 0.6em;
+}
+
+.settings{
+    height: 3.3em;
+    cursor: pointer;
+    transition: transform 0.5s ease-in-out;
+}
+
+.settings:hover{
+    transform: scale(1.2);
+}
+
+.avatar{
+    cursor: pointer;
+    height: 3.1em;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+  
+.dropdown-content {
+    display: none;
+    position: absolute;
+    flex-direction: column;
+    background-color: #1f2e47;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    padding: 0.3em;
+    z-index: 1;
+    font-size: 1.2rem;
+    border-radius: 6px;
+    white-space: nowrap;
+    animation: bounceIn 0.5s ease-in-out;
+}
+
+@keyframes bounceIn {
+    0%, 20%, 50%, 80%, 100% {
+      transform: scale(1); 
+    }
+    40% {
+      transform: scale(1.1); 
+    }
+    60% {
+      transform: scale(1); 
+    }
+}
+
+.flex{
+    display: flex;
+}
+.flexColumn{
+    display: flex;
+    flex-direction: column;
+}
+
+.subCategories{
+    text-decoration: none;
+    color: white;
+    font-weight: 100;
+    padding: 0.7em 2em 0.7em 1em;
+    
+}
+
+.subCategories:hover{
+    background-color: #151f30;
+    border-radius: 3px;
+    color: rgba(85, 204, 255, 1)
+
+}
+
+  
+.dropdown:hover .dropdown-content {
+    display: block;
+}
