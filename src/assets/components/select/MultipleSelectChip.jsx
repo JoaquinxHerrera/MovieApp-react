@@ -1,4 +1,4 @@
-import * as React from 'react';
+import PropTypes from 'prop-types';
 import { useTheme } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import OutlinedInput from '@mui/material/OutlinedInput';
@@ -7,6 +7,7 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import Chip from '@mui/material/Chip';
+
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
@@ -19,18 +20,7 @@ const MenuProps = {
   },
 };
 
-const names = [
-  'Oliver Hansen',
-  'Van Henry',
-  'April Tucker',
-  'Ralph Hubbard',
-  'Omar Alexander',
-  'Carlos Abbott',
-  'Miriam Wagner',
-  'Bradley Wilkerson',
-  'Virginia Andrews',
-  'Kelly Snyder',
-];
+
 
 function getStyles(name, personName, theme) {
   return {
@@ -41,31 +31,50 @@ function getStyles(name, personName, theme) {
   };
 }
 
-export default function MultipleSelectChip() {
-  const theme = useTheme();
-  const [personName, setPersonName] = React.useState([]);
-
-  const handleChange = (event) => {
-    const {
-      target: { value },
-    } = event;
-    setPersonName(
-      // On autofill we get a stringified value.
-      typeof value === 'string' ? value.split(',') : value,
-    );
+MultipleSelectChip.propTypes = {
+    genres: PropTypes.arrayOf(
+      PropTypes.shape({
+        id: PropTypes.number.isRequired,
+        name: PropTypes.string.isRequired,
+      })
+    ).isRequired,
+    handleSearch: PropTypes.func.isRequired,
+    selectedGenres: PropTypes.array.isRequired,
+    handleChangeGenres: PropTypes.func.isRequired,
+    setGenres: PropTypes.func.isRequired,
   };
+
+export default function MultipleSelectChip({genres, setGenres, handleChangeGenres, selectedGenres}) {
+  const theme = useTheme();
+
+  
+  
+//   const handleChange = (event, selectedValues) => {
+//     const selectedGenresNames = Array.isArray(selectedValues)
+//     ? selectedValues.map((value) => value.name)
+//     : [];
+//     handleChangeGenres(event, selectedGenresNames);
+//   };
+    const handleChange = (event, value) => {
+    // Actualiza el estado con un array de objetos
+    setGenres(value);
+  
+    // Llama a la función de cambio externa
+    handleChangeGenres(event, value);
+  };
+
 
   return (
     <div>
       <FormControl sx={{ m: 1, width: 300 }}>
-        <InputLabel id="demo-multiple-chip-label">Chip</InputLabel>
+        <InputLabel id="multiple-chip-label">Genres</InputLabel>
         <Select
-          labelId="demo-multiple-chip-label"
-          id="demo-multiple-chip"
+          labelId="multiple-chip-label"
+          id="multiple-chip"
           multiple
-          value={personName}
+          value={selectedGenres.map((genre) => genre.name)}
           onChange={handleChange}
-          input={<OutlinedInput id="select-multiple-chip" label="Chip" />}
+          input={<OutlinedInput id="multiple-chip-label" label="Genres" />}
           renderValue={(selected) => (
             <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.5 }}>
               {selected.map((value) => (
@@ -75,13 +84,13 @@ export default function MultipleSelectChip() {
           )}
           MenuProps={MenuProps}
         >
-          {names.map((name) => (
+          {genres.map((genre) => (
             <MenuItem
-              key={name}
-              value={name}
-              style={getStyles(name, personName, theme)}
+              key={genre.id}
+              value={genre}
+              style={getStyles(genre.name, selectedGenres, theme)}
             >
-              {name}
+              {genre.name}
             </MenuItem>
           ))}
         </Select>

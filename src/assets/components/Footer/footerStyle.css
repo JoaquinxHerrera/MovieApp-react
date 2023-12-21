@@ -1,0 +1,18 @@
+.footer{
+    display: flex;
+    width: 40%;
+    margin: auto;
+    margin-top: 3em;
+    justify-content: space-around;
+    align-items: center;
+    
+}
+
+.footer a{
+    text-decoration: none;
+    color: white;
+}
+
+.footer a img{
+    width: 2.5em;
+}

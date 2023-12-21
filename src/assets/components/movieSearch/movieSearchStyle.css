@@ -7,6 +7,7 @@ h1{
     margin-bottom: 0.3em;
 }
 
+
 .movieList{
     display: grid;
     margin-top: 2em;
@@ -18,11 +19,13 @@ h1{
     gap: 30px;
 }
 
-.movieList h2{
+.movieTitle{
     font-size: 1rem;
     font-weight: 400;
     color: white;
-    margin-top: 0.5em;
+    margin: 0.5em 0;
+    
+    width: 180px;
 }
 
 
@@ -30,20 +33,25 @@ h1{
     position: relative;
     overflow: hidden;
 }
-.movieImage{
+.movieImage {
     border-radius: 8px;
     box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.25);
-    width: 100%;
-    height: auto;
+    width: 100%; /* Utiliza el 100% del contenedor */
+    height: auto; /* Mantén la relación de aspecto original */
+    object-fit: cover;
     display: block;
-}
+    min-width: 180px; /* Establece un ancho mínimo */
+    min-height: 270px;
+    max-width: 180px;
+    max-height: 270px; /* Establece una altura mínima */
+  }
 
 .movieOverlay {
     position: absolute;
     border-radius: 8px;
     top: 0;
     left: 0;
-    width: 100%;
+    width: 180px;
     height: 170px;
     background: rgba(0, 0, 0, 0.5);
     display: flex;
@@ -51,6 +59,8 @@ h1{
     justify-content: center;
     opacity: 0;
 }
+
+
 .movie:hover .movieImage {
     filter: brightness(50%);
 }
@@ -95,7 +105,7 @@ h1{
     color: #cbcdd3;
     border-radius: 8px;
     max-width: 70%;
-    width: auto;
+    width: 70%;
     height: 70%;
     text-align: left;
     display: flex;
@@ -110,6 +120,7 @@ h1{
 .overlayLeft img{
     width: auto;
     height: 100%;
+    border-radius: 8px 0px 0 8px;
 }
 
 .overlayRight{
@@ -230,14 +241,15 @@ h1{
     padding: 0.8em 1.5em;
     border-radius: 6px;
     border: none;
-    font-size: 0.7rem;
+    font-size: 0.8rem;
     font-weight: 600;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    color: rgb(37, 46, 62);
 }
 
 .favoritesBtn:hover{
-    background-color: rgb(120, 214, 255);
+    background-color: rgb(170, 228, 253);
 }
 
 .favoritesBtn img{
@@ -254,7 +266,7 @@ h1{
     padding: 0.8em 1.5em;
     border-radius: 6px;
     border: none;
-    font-size: 0.7rem;
+    font-size: 0.8rem;
     color: white;
     font-weight: 600;
     cursor: pointer;
@@ -264,7 +276,7 @@ h1{
 
 
 .watchlistBtn:hover{
-    background-color: rgb(229, 20, 219);
+    background-color: rgb(255, 0, 242);
 }
 
 .watchlistBtn img{
@@ -317,6 +329,7 @@ input:focus{
 .loadMore{
     width: 100%;
     height: 3em;
+    margin-top: 2em;
     padding: 0.8em 2em;
     background-color: rgb(85, 82, 239);
     border: none;
@@ -351,3 +364,24 @@ input:focus{
     color: white;
     
 }
+
+.spinner{
+    margin: 10em auto;
+}
+
+
+::-webkit-scrollbar {
+    width: 10px; 
+}
+  
+::-webkit-scrollbar-thumb {
+    background-color: rgba(85, 204, 255, 1); 
+    border-radius: 6px; 
+}
+  
+::-webkit-scrollbar-track {
+    background-color: #10162E; 
+}
+  
+  
+  
